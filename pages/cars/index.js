@@ -144,6 +144,10 @@ const CarListingsPage = () => {
               <span>Filters</span>
               <ChevronDown size={18} className="text-gray-400 ml-2" />
             </button>
+<button className="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium">
+              Update search
+            </button>
+          </div>
 
 
 
