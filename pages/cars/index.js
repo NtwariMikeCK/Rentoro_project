@@ -148,6 +148,29 @@ const CarListingsPage = () => {
               Update search
             </button>
           </div>
+{/* Filters Panel */}
+          {filterOpen && (
+            <div className="mt-4 p-6 bg-white border rounded-md shadow-md">
+              <h3 className="font-bold text-lg mb-4">Filter cars</h3>
+
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <h4 className="font-medium mb-2">Price range</h4>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      className="w-full px-3 py-2 border rounded-md"
+                      placeholder="Min"
+                    />
+                    <span>to</span>
+                    <input
+                      type="number"
+                      className="w-full px-3 py-2 border rounded-md"
+                      placeholder="Max"
+                    />
+                  </div>
+                </div>
 
 
 
