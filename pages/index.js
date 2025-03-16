@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Calendar } from "lucide-react";
 import SignUpModal from "../components/auth/signup";
 
-
 const HomePage = () => {
   const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -147,7 +146,7 @@ const HomePage = () => {
             >
               <div className="h-48 bg-gray-200">
                 <img
-                  src={/images/2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg}
+                  src={"/images/2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg"}
                   alt="Car"
                   className="w-full h-full object-cover"
                 />
@@ -461,7 +460,7 @@ const HomePage = () => {
       <SignUpModal
         isOpen={isSignUpModalOpen}
         onClose={() => setIsSignUpModalOpen(false)}
-        />
+      />
     </div>
   );
 };
