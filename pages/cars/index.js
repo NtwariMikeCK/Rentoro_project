@@ -53,3 +53,28 @@ const CarListingsPage = () => {
       image: "/images/Toyota Land Cruiser.jpg",
       features: ["Spacious", "7 Seats", "Powerful engine"],
     },
+{
+      id: 5,
+      name: "Hyundai Tucson",
+      year: 2021,
+      location: "Rubavu, Rwanda",
+      price: 38,
+      rating: 4.6,
+      reviews: 19,
+      image: "/images/Hyundai-Tucson-2023_12.webp",
+      features: ["Fuel efficient", "Modern interior", "Apple CarPlay"],
+    },
+    {
+      id: 6,
+      name: "Nissan X-Trail",
+      year: 2020,
+      location: "Kigali, Rwanda",
+      price: 40,
+      rating: 4.7,
+      reviews: 31,
+      image: "/images/Nissan X-Trail.webp",
+      features: ["Spacious", "Roof rack", "Good for families"],
+    },
+  ];
+
+
