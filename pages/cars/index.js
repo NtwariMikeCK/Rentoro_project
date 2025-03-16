@@ -125,6 +125,25 @@ const CarListingsPage = () => {
                 defaultValue="Mar 15, 2025"
               />
             </div>
+       <div className="flex items-center px-4 py-2 border rounded-md bg-white">
+              <Calendar size={18} className="text-gray-400 mr-2" />
+              <input
+                type="text"
+                className="border-none focus:outline-none"
+                placeholder="Drop-off date"
+                defaultValue="Mar 20, 2025"
+              />
+            </div>
+
+
+            <button
+              className="flex items-center px-4 py-2 border rounded-md bg-white hover:bg-gray-50"
+              onClick={() => setFilterOpen(!filterOpen)}
+            >
+              <Filter size={18} className="text-gray-400 mr-2" />
+              <span>Filters</span>
+              <ChevronDown size={18} className="text-gray-400 ml-2" />
+            </button>
 
 
 
