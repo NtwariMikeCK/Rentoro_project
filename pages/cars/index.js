@@ -211,6 +211,27 @@ const CarListingsPage = () => {
           )}
         </div>
       </div>
+{/* Car Listings */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cars.map((car) => (
+            <div key={car.id} className="bg-white p-6 rounded-md shadow-md">
+              <img
+                src={car.image}
+                alt={car.name}
+                className="w-full h-56 object-cover rounded-md mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">
+                {car.name} ({car.year})
+              </h3>
+              <p className="text-gray-600 mb-2">{car.location}</p>
+              <div className="flex items-center text-yellow-500 mb-2">
+                <span>{"★".repeat(Math.round(car.rating))}</span>
+                <span className="text-gray-500 ml-2">
+                  ({car.reviews} reviews)
+                </span>
+              </div>
+              <p className="text-lg font-bold mb-2">${car.price} per day</p>
 
 
 
