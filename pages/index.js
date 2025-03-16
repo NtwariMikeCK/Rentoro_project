@@ -4,14 +4,7 @@ import { Calendar } from "lucide-react";
 import SignUpModal from "../components/auth/signup";
 
 
-const HomePage = () => {
-  const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-  const openSignUpModal = () => {
-    setIsSignUpModalOpen(true);
-  };
+
 
   return (
     <div className="min-h-screen bg-white">
