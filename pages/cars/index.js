@@ -101,6 +101,30 @@ const CarListingsPage = () => {
           </div>
         </div>
       </header>
+ {/* Search Bar */}
+      <div className="bg-white border-b">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center px-4 py-2 border rounded-md bg-white">
+              <MapPin size={18} className="text-gray-400 mr-2" />
+              <input
+                type="text"
+                className="border-none focus:outline-none"
+                placeholder="Location"
+                defaultValue="Kigali, Rwanda"
+              />
+            </div>
+
+
+            <div className="flex items-center px-4 py-2 border rounded-md bg-white">
+              <Calendar size={18} className="text-gray-400 mr-2" />
+              <input
+                type="text"
+                className="border-none focus:outline-none"
+                placeholder="Pick-up date"
+                defaultValue="Mar 15, 2025"
+              />
+            </div>
 
 
 
