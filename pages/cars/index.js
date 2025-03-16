@@ -2,10 +2,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Calendar, MapPin, Filter, ChevronDown } from "lucide-react";
 
-
 const CarListingsPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
-
 
   // Sample car data
   const cars = [
@@ -31,7 +29,7 @@ const CarListingsPage = () => {
       image: "/images/Honda_CR-V_e-HEV_Elegance_AWD_(VI)_–_f_14072024.jpg",
       features: ["All-wheel drive", "USB ports", "Fuel efficient"],
     },
- {
+    {
       id: 3,
       name: "Jeep Wrangler",
       year: 2020,
@@ -53,7 +51,7 @@ const CarListingsPage = () => {
       image: "/images/Toyota Land Cruiser.jpg",
       features: ["Spacious", "7 Seats", "Powerful engine"],
     },
-{
+    {
       id: 5,
       name: "Hyundai Tucson",
       year: 2021,
@@ -86,7 +84,6 @@ const CarListingsPage = () => {
               Rentoro
             </a>
 
-
             <div className="flex items-center space-x-6">
               <a href="#" className="text-gray-600 hover:text-blue-600">
                 Become a host
@@ -101,7 +98,7 @@ const CarListingsPage = () => {
           </div>
         </div>
       </header>
- {/* Search Bar */}
+      {/* Search Bar */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-wrap items-center gap-4">
@@ -115,7 +112,6 @@ const CarListingsPage = () => {
               />
             </div>
 
-
             <div className="flex items-center px-4 py-2 border rounded-md bg-white">
               <Calendar size={18} className="text-gray-400 mr-2" />
               <input
@@ -125,7 +121,7 @@ const CarListingsPage = () => {
                 defaultValue="Mar 15, 2025"
               />
             </div>
-       <div className="flex items-center px-4 py-2 border rounded-md bg-white">
+            <div className="flex items-center px-4 py-2 border rounded-md bg-white">
               <Calendar size={18} className="text-gray-400 mr-2" />
               <input
                 type="text"
@@ -135,7 +131,6 @@ const CarListingsPage = () => {
               />
             </div>
 
-
             <button
               className="flex items-center px-4 py-2 border rounded-md bg-white hover:bg-gray-50"
               onClick={() => setFilterOpen(!filterOpen)}
@@ -144,15 +139,14 @@ const CarListingsPage = () => {
               <span>Filters</span>
               <ChevronDown size={18} className="text-gray-400 ml-2" />
             </button>
-<button className="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium">
+            <button className="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium">
               Update search
             </button>
           </div>
-{/* Filters Panel */}
+          {/* Filters Panel */}
           {filterOpen && (
             <div className="mt-4 p-6 bg-white border rounded-md shadow-md">
               <h3 className="font-bold text-lg mb-4">Filter cars</h3>
-
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
@@ -171,7 +165,7 @@ const CarListingsPage = () => {
                     />
                   </div>
                 </div>
-<div>
+                <div>
                   <h4 className="font-medium mb-2">Vehicle type</h4>
                   <div className="space-y-2">
                     <label className="flex items-center">
@@ -189,7 +183,7 @@ const CarListingsPage = () => {
                   </div>
                 </div>
 
-   <div>
+                <div>
                   <h4 className="font-medium mb-2">Features</h4>
                   <div className="space-y-2">
                     <label className="flex items-center">
@@ -211,7 +205,7 @@ const CarListingsPage = () => {
           )}
         </div>
       </div>
-{/* Car Listings */}
+      {/* Car Listings */}
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cars.map((car) => (
@@ -232,7 +226,19 @@ const CarListingsPage = () => {
                 </span>
               </div>
               <p className="text-lg font-bold mb-2">${car.price} per day</p>
+              <div className="flex items-center gap-2">
+                {car.features.map((feature, index) => (
+                  <span key={index} className="text-sm text-gray-600">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-
-
-
+export default CarListingsPage;
