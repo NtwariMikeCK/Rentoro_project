@@ -171,6 +171,25 @@ const CarListingsPage = () => {
                     />
                   </div>
                 </div>
+<div>
+                  <h4 className="font-medium mb-2">Vehicle type</h4>
+                  <div className="space-y-2">
+                    <label className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span>SUV</span>
+                    </label>
+                    <label className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span>Sedan</span>
+                    </label>
+                    <label className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span>Truck</span>
+                    </label>
+                  </div>
+                </div>
+
+
 
 
 
