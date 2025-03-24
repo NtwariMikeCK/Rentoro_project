@@ -1,21 +1,37 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, Search, MapPin } from "lucide-react";
 import SignUpModal from "../components/auth/signup";
+import { useRouter } from "next/router";
 
 const HomePage = () => {
+  const router = useRouter();
   const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+
   const openSignUpModal = () => {
     setIsSignUpModalOpen(true);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    // Create query parameters
+    const searchParams = new URLSearchParams();
+    if (location) searchParams.set("location", location);
+    if (startDate) searchParams.set("startDate", startDate);
+    if (endDate) searchParams.set("endDate", endDate);
+
+    // Navigate to cars page with search parameters
+    router.push(`/cars?${searchParams.toString()}`);
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-screen">
+      <div className="relative min-h-[800px]">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
@@ -23,279 +39,359 @@ const HomePage = () => {
             backgroundImage: "url('/images/pexels-shkrabaanthony-7144209.jpg')",
           }}
         >
-          <div className="absolute inset-0 bg-opacity-40"></div>
+          <div className="absolute inset-0  bg-opacity-30"></div>
         </div>
 
         {/* Navigation */}
-        <nav className="relative z-10 flex items-center justify-between px-6 py-4">
+        <nav className="relative z-10 flex items-center justify-between px-8 py-6">
           <div className="flex items-center">
-            <h1 className="text-3xl font-extrabold text-white text-centers">
-              Rentoro
-            </h1>
+            <Link href="/">
+              <h1 className="text-4xl font-black text-white">Rentoro</h1>
+            </Link>
           </div>
-          <div className="flex items-center space-x-6">
-            <a
-              href="#"
-              className="text-black hover:text-gray-900 hover:underline text-xl font-bold "
+          <div className="flex items-center space-x-8">
+            <Link
+              href="/host"
+              className="text-white hover:text-gray-200 text-base font-medium"
             >
               Become a host
-            </a>
-            <a
-              href="#"
-              className="text-black hover:text-gray-900 hover:underline text-xl font-bold"
-            >
-              Learn more
-            </a>
+            </Link>
             <button
               onClick={openSignUpModal}
-              className="bg-white text-gray-900 px-4 py-2 rounded-md font-black"
+              className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2.5 rounded-lg font-medium transition-colors"
             >
               Sign up
             </button>
-            <button className="text-gray-900 border border-white px-4 py-2 rounded-md font-black">
+            <button className="text-white hover:text-gray-200 font-medium">
               Log in
             </button>
           </div>
         </nav>
 
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
-          <h2 className="text-5xl  mb-6 font-extrabold">
-            Find the perfect car for your next adventure
+        <div className="relative z-10 flex flex-col items-start justify-center h-full px-8 pt-32 max-w-7xl mx-auto">
+          <h2 className="text-6xl font-black text-white mb-8 max-w-3xl">
+            Find your drive
           </h2>
-          <p className="text-xl mb-12 max-w-2xl font-bold">
-            Rent cars from local hosts across Rwanda. Explore at your own pace.
+          <p className="text-xl text-white mb-12 max-w-2xl font-medium">
+            Explore the largest car sharing marketplace in Rwanda
           </p>
 
           {/* Search Form */}
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl text-left">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Where
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-                  placeholder="City, airport, or address"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  From
-                </label>
+          <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-4xl">
+            <form onSubmit={handleSearch}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="relative">
-                  <input
-                    type="date"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                  />
-                  <Calendar
-                    className="absolute right-3 top-3 text-gray-400"
-                    size={20}
-                  />
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Where
+                  </label>
+                  <div className="relative">
+                    <MapPin
+                      className="absolute left-4 top-3.5 text-gray-400"
+                      size={20}
+                    />
+                    <input
+                      type="text"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#593CFB] text-gray-900 placeholder-gray-500"
+                      placeholder="City, airport, or address"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    From
+                  </label>
+                  <div className="relative">
+                    <Calendar
+                      className="absolute left-4 top-3.5 text-gray-400"
+                      size={20}
+                    />
+                    <input
+                      type="date"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#593CFB] text-gray-900"
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                      required
+                      min={new Date().toISOString().split("T")[0]}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Until
+                  </label>
+                  <div className="relative">
+                    <Calendar
+                      className="absolute left-4 top-3.5 text-gray-400"
+                      size={20}
+                    />
+                    <input
+                      type="date"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#593CFB] text-gray-900"
+                      value={endDate}
+                      onChange={(e) => setEndDate(e.target.value)}
+                      required
+                      min={startDate || new Date().toISOString().split("T")[0]}
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Until
-                </label>
-                <div className="relative">
-                  <input
-                    type="date"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                  />
-                  <Calendar
-                    className="absolute right-3 top-3 text-gray-400"
-                    size={20}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <Link href="/cars">
-              <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition">
+              <button
+                type="submit"
+                className="mt-6 w-full bg-[#593CFB] hover:bg-[#452CC9] text-white font-medium py-3.5 px-4 rounded-lg transition-colors"
+              >
                 Search for cars
               </button>
-            </Link>
+            </form>
           </div>
         </div>
       </div>
       {/* Featured Cars Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold mb-4">Featured cars in Rwanda</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover the most popular vehicles chosen by travelers for their
-            Rwanda adventures.
-          </p>
-        </div>
+      <div className="py-20 bg-gray-50">
+        <div className="container mx-auto px-8">
+          <h2 className="text-4xl font-bold mb-12 text-gray-900">
+            Popular cars in Rwanda
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((car) => (
-            <div
-              key={car}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition"
-            >
-              <div className="h-48 bg-gray-200">
-                <img
-                  src={"/images/2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg"}
-                  alt="Car"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold">Toyota RAV4</h3>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500">★</span>
-                    <span className="ml-1">4.9 (42)</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((car) => (
+              <div
+                key={car}
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
+              >
+                <div className="relative h-64">
+                  <img
+                    src={"/images/2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg"}
+                    alt="Car"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <button className="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                      </svg>
+                    </button>
                   </div>
                 </div>
-                <p className="text-gray-600 mb-4">
-                  Modern SUV perfect for exploring Rwanda's landscape.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="font-bold text-lg">$45 / day</span>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition">
-                    View details
-                  </button>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Toyota RAV4
+                      </h3>
+                      <div className="flex items-center mt-1">
+                        <span className="text-yellow-400">★</span>
+                        <span className="ml-1 text-sm text-gray-600">
+                          4.9 (42 trips)
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-end">
+                    <div>
+                      <span className="text-2xl font-bold text-gray-900">
+                        $45
+                      </span>
+                      <span className="text-gray-600">/day</span>
+                    </div>
+                    <button className="bg-[#593CFB] hover:bg-[#452CC9] text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">
+                      Book now
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="mt-10 text-center">
-          <button className="bg-white text-blue-600 border border-blue-600 hover:bg-blue-50 font-bold py-3 px-6 rounded-md transition">
-            View all cars
-          </button>
+          <div className="mt-12 text-center">
+            <button className="bg-white text-[#593CFB] border-2 border-[#593CFB] hover:bg-[#593CFB] hover:text-white font-medium py-3 px-8 rounded-lg transition-colors">
+              Browse all cars
+            </button>
+          </div>
         </div>
       </div>
       {/* How It Works Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">How Rentoro works</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Simple steps to rent a car from local hosts in Rwanda.
-            </p>
-          </div>
+      <div className="py-20 bg-white">
+        <div className="container mx-auto px-8">
+          <h2 className="text-4xl font-bold mb-16 text-gray-900">
+            How Rentoro works
+          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 text-xl font-bold">1</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+              <div className="mb-6">
+                <img
+                  src="/images/browse-cars.svg"
+                  alt="Browse cars"
+                  className="w-16 h-16"
+                />
               </div>
-              <h3 className="text-xl font-bold mb-3">Find the perfect car</h3>
-              <p className="text-gray-600">
-                Enter your travel dates and location to browse our selection of
-                vehicles from local hosts.
+              <h3 className="text-xl font-bold mb-4 text-gray-900">
+                Browse cars
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Find the perfect car for your next adventure. Filter by make,
+                model, price, and more.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 text-xl font-bold">2</span>
+            <div>
+              <div className="mb-6">
+                <img
+                  src="/images/book-instantly.svg"
+                  alt="Book instantly"
+                  className="w-16 h-16"
+                />
               </div>
-              <h3 className="text-xl font-bold mb-3">Book your trip</h3>
-              <p className="text-gray-600">
-                Book online with instant confirmation. Contact your host with
-                any questions.
+              <h3 className="text-xl font-bold mb-4 text-gray-900">
+                Book instantly
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Book the car you want with instant confirmation. No waiting for
+                approval needed.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 text-xl font-bold">3</span>
+            <div>
+              <div className="mb-6">
+                <img
+                  src="/images/hit-the-road.svg"
+                  alt="Hit the road"
+                  className="w-16 h-16"
+                />
               </div>
-              <h3 className="text-xl font-bold mb-3">Hit the road</h3>
-              <p className="text-gray-600">
-                Meet your host to get the keys or use contactless check-in, then
-                enjoy your adventure!
+              <h3 className="text-xl font-bold mb-4 text-gray-900">
+                Hit the road
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Pick up your car at the agreed location and start your adventure
+                with confidence.
               </p>
             </div>
           </div>
         </div>
       </div>
       {/* Become a Host Section */}
-      <div className="relative py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="relative py-24 bg-gray-50">
+        <div className="container mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-4">
-                Earn money by sharing your car
+              <h2 className="text-4xl font-bold mb-6 text-gray-900">
+                Share your car, earn extra income
               </h2>
-              <p className="text-gray-600 mb-6">
-                Turn your car into a second income. Offset your car payments by
-                sharing your vehicle when you're not using it.
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                Join thousands of hosts in Rwanda who are earning money by
+                sharing their cars on Rentoro.
               </p>
-              <ul className="mb-8 space-y-4">
-                <li className="flex items-start">
-                  <div className="bg-green-100 p-1 rounded-full mr-3 mt-1">
-                    <svg
-                      className="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
+              <div className="space-y-6 mb-10">
+                <div className="flex items-center space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-[#593CFB] bg-opacity-10 flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-[#593CFB]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                  <span>Set your own schedule and pricing</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="bg-green-100 p-1 rounded-full mr-3 mt-1">
-                    <svg
-                      className="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      Earn money sharing your car
+                    </h3>
+                    <p className="text-gray-600">
+                      Average hosts earn $10,516 annually sharing their car
+                    </p>
                   </div>
-                  <span>Get insurance coverage during every trip</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="bg-green-100 p-1 rounded-full mr-3 mt-1">
-                    <svg
-                      className="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-[#593CFB] bg-opacity-10 flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-[#593CFB]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                  <span>Access our 24/7 customer support</span>
-                </li>
-              </ul>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition">
-                List your car
-              </button>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      Insurance included
+                    </h3>
+                    <p className="text-gray-600">
+                      Up to $1M in liability insurance and 24/7 support
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-[#593CFB] bg-opacity-10 flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-[#593CFB]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      You're in control
+                    </h3>
+                    <p className="text-gray-600">
+                      Set your own price, availability, and rules
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <Link href="/list-your-car">
+                <button className="bg-[#593CFB] hover:bg-[#452CC9] text-white font-medium py-3.5 px-8 rounded-lg transition-colors">
+                  Get started
+                </button>
+              </Link>
             </div>
-            <div>
+            <div className="relative">
               <img
                 src="/images/host with a car.png"
                 alt="Host with car"
-                className="rounded-lg shadow-lg"
+                className="rounded-2xl shadow-2xl w-full"
               />
             </div>
           </div>
@@ -345,73 +441,99 @@ const HomePage = () => {
         </div>
       </div>
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="container mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div>
-              <h3 className="text-xl font-bold mb-4">Rentoro</h3>
-              <p className="text-gray-400">
-                The car-sharing platform connecting car owners and travelers in
-                Rwanda.
+              <h3 className="text-2xl font-bold mb-6">Rentoro</h3>
+              <p className="text-gray-400 leading-relaxed">
+                The trusted car sharing marketplace in Rwanda
               </p>
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Explore</h4>
-              <ul className="space-y-2">
+              <h4 className="font-bold mb-6 text-lg">Explore</h4>
+              <ul className="space-y-4">
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    How it works
-                  </a>
+                  <Link
+                    href="/book"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Book a car
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Search cars
-                  </a>
+                  <Link
+                    href="/host"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Share your car
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Become a host
-                  </a>
+                  <Link
+                    href="/about"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    About us
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Trust & safety
-                  </a>
+                  <Link
+                    href="/cities"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Cities
+                  </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Support</h4>
-              <ul className="space-y-2">
+              <h4 className="font-bold mb-6 text-lg">Support</h4>
+              <ul className="space-y-4">
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Help center
-                  </a>
+                  <Link
+                    href="/help"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Help Center
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
+                  <Link
+                    href="/support"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
                     Contact us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Insurance
-                  </a>
+                  <Link
+                    href="/insurance"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Insurance & protection
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    COVID-19 resources
-                  </a>
+                  <Link
+                    href="/safety"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Safety standards
+                  </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Connect with us</h4>
-              <div className="flex space-x-4 mb-4">
-                <a href="#" className="text-gray-400 hover:text-white">
+              <h4 className="font-bold mb-6 text-lg">Follow us</h4>
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   <span className="sr-only">Facebook</span>
                   <svg
                     className="h-6 w-6"
@@ -425,7 +547,10 @@ const HomePage = () => {
                     />
                   </svg>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   <span className="sr-only">Instagram</span>
                   <svg
                     className="h-6 w-6"
@@ -439,7 +564,10 @@ const HomePage = () => {
                     />
                   </svg>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   <span className="sr-only">Twitter</span>
                   <svg
                     className="h-6 w-6"
@@ -450,8 +578,8 @@ const HomePage = () => {
                   </svg>
                 </a>
               </div>
-              <p className="text-gray-400 text-sm">
-                © 2025 Rentoro. All rights reserved.
+              <p className="mt-8 text-sm text-gray-400">
+                © {new Date().getFullYear()} Rentoro. All rights reserved.
               </p>
             </div>
           </div>

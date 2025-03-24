@@ -5,28 +5,31 @@ const SignUpModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md relative">
+    <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-[440px] relative">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 transition-colors"
         >
           <X size={24} />
         </button>
 
         {/* Modal content */}
-        <div className="p-6">
-          <h2 className="text-3xl font-extrabold text-center mb-8">
+        <div className="p-8">
+          <h2 className="text-[32px] font-bold text-center text-gray-900 mb-2">
             Welcome to Rentoro
           </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Find the perfect vehicle for your next adventure
+          </p>
 
           {/* Sign-up options */}
-          <div className="space-y-4">
-            <button className="flex items-center justify-center w-full border border-gray-300 rounded-md py-3 px-4 hover:bg-gray-50 transition">
+          <div className="space-y-3">
+            <button className="flex items-center justify-center w-full bg-black text-white rounded-lg py-3.5 px-4 hover:bg-gray-800 transition-colors font-medium">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-3"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -36,10 +39,10 @@ const SignUpModal = ({ isOpen, onClose }) => {
               Continue with Apple
             </button>
 
-            <button className="flex items-center justify-center w-full border border-gray-300 rounded-md py-3 px-4 hover:bg-gray-50 transition">
+            <button className="flex items-center justify-center w-full border-2 border-gray-200 bg-white text-gray-700 rounded-lg py-3.5 px-4 hover:border-gray-300 transition-colors font-medium">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-3"
                 viewBox="0 0 20 20"
               >
                 <path
@@ -62,10 +65,10 @@ const SignUpModal = ({ isOpen, onClose }) => {
               Continue with Google
             </button>
 
-            <button className="flex items-center justify-center w-full border border-gray-300 rounded-md py-3 px-4 hover:bg-gray-50 transition">
+            <button className="flex items-center justify-center w-full border-2 border-gray-200 bg-white text-gray-700 rounded-lg py-3.5 px-4 hover:border-gray-300 transition-colors font-medium">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-3"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -78,8 +81,8 @@ const SignUpModal = ({ isOpen, onClose }) => {
 
           {/* Log in section */}
           <div className="mt-8 pt-6 border-t border-gray-200 text-center">
-            <p className="text-gray-600 mb-4">Already have an account?</p>
-            <button className="font-medium text-blue-600 hover:text-blue-800">
+            <p className="text-gray-600 mb-2">Already have an account?</p>
+            <button className="font-semibold text-[#593CFB] hover:text-[#452CC9] transition-colors">
               Log in
             </button>
           </div>
@@ -88,8 +91,18 @@ const SignUpModal = ({ isOpen, onClose }) => {
           <div className="mt-6 text-center text-sm text-gray-500">
             <p>
               By signing up, you agree to Rentoro's{" "}
-              <a href="#" className="text-blue-600 hover:underline">
-                terms of service and privacy policy
+              <a
+                href="#"
+                className="text-[#593CFB] hover:text-[#452CC9] hover:underline transition-colors"
+              >
+                terms of service
+              </a>{" "}
+              and{" "}
+              <a
+                href="#"
+                className="text-[#593CFB] hover:text-[#452CC9] hover:underline transition-colors"
+              >
+                privacy policy
               </a>
             </p>
           </div>
