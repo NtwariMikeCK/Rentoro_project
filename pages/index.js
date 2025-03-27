@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Calendar, Search, MapPin } from "lucide-react";
 import SignUpModal from "../components/auth/signup";
+import SignInModal from "../components/authSignin/signin";
 import { useRouter } from "next/router";
 
 const HomePage = () => {
@@ -10,9 +11,13 @@ const HomePage = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
   const openSignUpModal = () => {
     setIsSignUpModalOpen(true);
+  };
+  const openSignInModal = () => {
+    setIsSignInModalOpen(true);
   };
 
   const handleSearch = (e) => {
@@ -62,7 +67,10 @@ const HomePage = () => {
             >
               Sign up
             </button>
-            <button className="text-white hover:text-gray-200 font-medium">
+            <button
+              onClick={openSignInModal}
+              className="text-white hover:text-gray-200 font-medium"
+            >
               Log in
             </button>
           </div>
@@ -588,6 +596,10 @@ const HomePage = () => {
       <SignUpModal
         isOpen={isSignUpModalOpen}
         onClose={() => setIsSignUpModalOpen(false)}
+      />
+      <SignInModal 
+        isOpen={isSignInModalOpen}
+        onClose={() => setIsSignInModalOpen(false)}
       />
     </div>
   );

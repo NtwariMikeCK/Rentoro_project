@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
-import SignInModal from "../authSignin/signin";
+import SignUpModal from "../auth/signup";
 
-const SignUpModal = ({ isOpen, onClose }) => {
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+const SignInModal = ({ isOpen, onClose }) => {
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
   if (!isOpen) return null;
 
-  const openSignInModal = () => {
-    onClose(); // Close the signup modal
-    setIsSignInModalOpen(true);
+  const openSignUpModal = () => {
+    onClose(); // Close the signin modal
+    setIsSignUpModalOpen(true);
   };
 
   return (
@@ -26,10 +26,10 @@ const SignUpModal = ({ isOpen, onClose }) => {
         {/* Modal content */}
         <div className="p-8">
           <h2 className="text-[32px] font-bold text-center text-gray-900 mb-2">
-            Welcome to Rentoro
+            Login in
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            Find the perfect vehicle for your next adventure
+            Welcome back
           </p>
 
           {/* Sign-up options */}
@@ -87,13 +87,13 @@ const SignUpModal = ({ isOpen, onClose }) => {
             </button>
           </div>
 
-          {/* Log in section */}
+          {/* Sign up section */}
           <div className="mt-8 pt-6 border-t border-gray-200 text-center">
-            <p className="text-gray-600 mb-2">Already have an account?</p>
-            <button
-              onClick={openSignInModal}
+            <p className="text-gray-600 mb-2">Don't have an account?</p>
+            <button 
+              onClick={openSignUpModal}
               className="font-semibold text-[#593CFB] hover:text-[#452CC9] transition-colors">
-              Log in
+              Sign up
             </button>
           </div>
 
@@ -119,12 +119,12 @@ const SignUpModal = ({ isOpen, onClose }) => {
         </div>
       </div>
       
-      <SignInModal 
-        isOpen={isSignInModalOpen}
-        onClose={() => setIsSignInModalOpen(false)}
+      <SignUpModal 
+        isOpen={isSignUpModalOpen}
+        onClose={() => setIsSignUpModalOpen(false)}
       />
     </div>
   );
 };
 
-export default SignUpModal;
+export default SignInModal;
