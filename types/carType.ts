@@ -11,3 +11,18 @@ export interface Car {
   transmission:  string,
   features: string[];
 }
+
+export interface CarDataType{
+  id: string,
+  make:string,
+  model: string,
+  year: number,
+  licensePlate: string,
+  color: string,
+  dailyRate: number,
+  isAvailable: boolean,
+  isValidated: boolean,
+  location: string,
+  description: string,
+  ownerId: string,
+}

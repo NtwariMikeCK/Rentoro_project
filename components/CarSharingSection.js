@@ -5,6 +5,7 @@ import {
   ShieldCheckIcon,
   CalendarIcon,
 } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const CarSharingSection = () => {
   const features = [
@@ -68,10 +69,11 @@ const CarSharingSection = () => {
         <div className="hidden md:block">
           <div className="relative">
             <div className="absolute -inset-2 bg-purple-200 rounded-3xl opacity-30 blur-xl"></div>
-            <img
+            <Image
               src="/images/host with a carl.png"
               alt="Car Sharing Illustration"
               className="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[500px]"
+              fill
             />
           </div>
         </div>
