@@ -8,5 +8,6 @@ export interface Car {
   rating: number;
   reviews: number;
   image: string;
+  transmission:  string,
   features: string[];
 }

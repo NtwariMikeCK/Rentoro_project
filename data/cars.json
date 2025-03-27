@@ -8,6 +8,7 @@
     "rating": 4.9,
     "reviews": 42,
     "image": "/images/2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg",
+    "transmission": "automatic",
     "features": ["4WD", "Bluetooth", "Backup camera"]
   },
   {
@@ -19,6 +20,7 @@
     "rating": 4.8,
     "reviews": 36,
     "image": "/images/Honda_CR-V_e-HEV_Elegance_AWD_(VI)_–_f_14072024.jpg",
+    "transmission": "manual",
     "features": ["All-wheel drive", "USB ports", "Fuel efficient"]
   },
   {
@@ -30,6 +32,7 @@
     "rating": 4.7,
     "reviews": 28,
     "image": "/images/pexels-esmihel-13696704.jpg",
+    "transmission": "automatic",
     "features": ["4x4", "Convertible", "Off-road ready"]
   },
   {
@@ -41,6 +44,7 @@
     "rating": 4.9,
     "reviews": 52,
     "image": "/images/Toyota Land Cruiser.jpg",
+    "transmission": "manual",
     "features": ["Spacious", "7 Seats", "Powerful engine"]
   },
   {
@@ -52,6 +56,7 @@
     "rating": 4.6,
     "reviews": 19,
     "image": "/images/Hyundai-Tucson-2023_12.webp",
+    "transmission": "automatic",
     "features": ["Fuel efficient", "Modern interior", "Apple CarPlay"]
   },
   {
@@ -63,6 +68,7 @@
     "rating": 4.7,
     "reviews": 31,
     "image": "/images/Nissan X-Trail.webp",
+    "transmission": "manual",
     "features": ["Spacious", "Roof rack", "Good for families"]
   }
 ]
