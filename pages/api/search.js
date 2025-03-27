@@ -85,15 +85,7 @@ export default function handler(req, res) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const {
-    location,
-    startDate,
-    endDate,
-    minPrice,
-    maxPrice,
-    carType,
-    transmission,
-  } = req.query;
+  const { location, minPrice, maxPrice, carType, transmission } = req.query;
 
   // Filter cars based on search criteria
   let filteredCars = [...carsData];
@@ -101,7 +93,7 @@ export default function handler(req, res) {
   // Filter by location
   if (location) {
     filteredCars = filteredCars.filter((car) =>
-      car.location.toLowerCase().includes(location.toLowerCase())
+      car.location.toLowerCase().includes(location.toLowerCase()),
     );
   }
 
@@ -110,7 +102,7 @@ export default function handler(req, res) {
     filteredCars = filteredCars.filter(
       (car) =>
         car.pricePerDay >= parseInt(minPrice) &&
-        car.pricePerDay <= parseInt(maxPrice)
+        car.pricePerDay <= parseInt(maxPrice),
     );
   }
 
@@ -122,7 +114,7 @@ export default function handler(req, res) {
   // Filter by transmission
   if (transmission && transmission !== "all") {
     filteredCars = filteredCars.filter(
-      (car) => car.transmission === transmission
+      (car) => car.transmission === transmission,
     );
   }
 

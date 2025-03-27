@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { Calendar, Search, MapPin } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import SignUpModal from "../components/auth/signup";
 import SignInModal from "../components/authSignin/signin";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const HomePage = () => {
   const router = useRouter();
@@ -173,12 +174,14 @@ const HomePage = () => {
                 key={car}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
               >
-                <div className="relative h-64">
-                  <img
+                <div className="relative h-64 ">
+                  <Image
                     src={"/images/2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg"}
                     alt="Car"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    fill
                   />
+
                   <div className="absolute top-4 right-4">
                     <button className="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow">
                       <svg
@@ -240,11 +243,12 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
-              <div className="mb-6">
-                <img
+              <div className="mb-6 relative">
+                <Image
                   src="/images/browse-cars.svg"
                   alt="Browse cars"
                   className="w-16 h-16"
+                  fill
                 />
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">
@@ -257,11 +261,12 @@ const HomePage = () => {
             </div>
 
             <div>
-              <div className="mb-6">
-                <img
+              <div className="mb-6 relative">
+                <Image
                   src="/images/book-instantly.svg"
                   alt="Book instantly"
                   className="w-16 h-16"
+                  fill
                 />
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">
@@ -274,19 +279,21 @@ const HomePage = () => {
             </div>
 
             <div>
-              <div className="mb-6">
-                <img
+              <div className="mb-6 relative">
+                <Image
                   src="/images/hit-the-road.svg"
                   alt="Hit the road"
                   className="w-16 h-16"
+                  fill
                 />
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">
                 Hit the road
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Pick up your car at the agreed location and start your adventure
-                with confidence.
+                {
+                  "Pick up your car at the agreed location and start your adventure with confidence."
+                }
               </p>
             </div>
           </div>
@@ -381,7 +388,7 @@ const HomePage = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">
-                      You're in control
+                      {"You're in control"}
                     </h3>
                     <p className="text-gray-600">
                       Set your own price, availability, and rules
@@ -396,9 +403,10 @@ const HomePage = () => {
               </Link>
             </div>
             <div className="relative">
-              <img
+              <Image
                 src="/images/host with a car.png"
                 alt="Host with car"
+                fill
                 className="rounded-2xl shadow-2xl w-full"
               />
             </div>
@@ -421,13 +429,13 @@ const HomePage = () => {
                 <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
                 <div>
                   <h4 className="font-bold">Jean Claude</h4>
-                  <p className="text-gray-600 text-sm">Car Owner, Kigali</p>
+                  <p className="text-gray-600 text-sm">{"Car Owner, Kigali"}</p>
                 </div>
               </div>
               <p className="text-gray-600">
-                "I've been able to make extra income from my car when I'm not
-                using it. The platform is easy to use and support is always
-                there when I need help."
+                {
+                  "I've been able to make extra income from my car when I'm not using it. The platform is easy to use and support is always there when I need help."
+                }
               </p>
             </div>
 
@@ -440,9 +448,9 @@ const HomePage = () => {
                 </div>
               </div>
               <p className="text-gray-600">
-                "Renting a car through Rentoro made my trip to Rwanda so much
-                more enjoyable. The process was smooth, and I got a great car
-                for a reasonable price."
+                {
+                  "Renting a car through Rentoro made my trip to Rwanda so much more enjoyable. The process was smooth, and I got a great car for a reasonable price."
+                }
               </p>
             </div>
           </div>
@@ -597,7 +605,7 @@ const HomePage = () => {
         isOpen={isSignUpModalOpen}
         onClose={() => setIsSignUpModalOpen(false)}
       />
-      <SignInModal 
+      <SignInModal
         isOpen={isSignInModalOpen}
         onClose={() => setIsSignInModalOpen(false)}
       />

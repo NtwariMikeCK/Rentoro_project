@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Check, Shield, Calendar, DollarSign } from "lucide-react";
+import { ArrowRight, Shield, Calendar, DollarSign } from "lucide-react";
+import Image from "next/image";
 
 const HostPage = () => {
   return (
@@ -36,8 +37,9 @@ const HostPage = () => {
                     Earn money by sharing your car
                   </h1>
                   <p className="mt-6 text-xl text-gray-600 max-w-xl">
-                    Share your car whenever you're not using it and earn an
-                    average of $10,516 annually in Rwanda*
+                    {
+                      "Share your car whenever you're not using it and earn an average of $10,516 annually in Rwanda*"
+                    }
                   </p>
                   <div className="mt-10">
                     <Link href="/list-your-car">
@@ -48,14 +50,17 @@ const HostPage = () => {
                     </Link>
                   </div>
                   <p className="mt-4 text-sm text-gray-500">
-                    *Based on annual earnings of hosts in Rwanda sharing one car
+                    {
+                      "*Based on annual earnings of hosts in Rwanda sharing one car"
+                    }
                   </p>
                 </div>
                 <div className="relative">
-                  <img
+                  <Image
                     src="/images/host with a carl.png"
                     alt="Host with car"
                     className="rounded-2xl shadow-2xl"
+                    fill
                   />
                 </div>
               </div>
@@ -85,8 +90,9 @@ const HostPage = () => {
                   </p>
                 </div>
                 <div className="mt-4 ml-16 text-base text-gray-600">
-                  Make money sharing your car when you're not using it. You're
-                  in control of your availability, pricing, and who can book.
+                  {
+                    "Make money sharing your car when you're not using it. You're in control of your availability, pricing, and who can book."
+                  }
                 </div>
               </div>
 
@@ -100,8 +106,9 @@ const HostPage = () => {
                   </p>
                 </div>
                 <div className="mt-4 ml-16 text-base text-gray-600">
-                  Rest easy knowing you're covered with up to $1M in liability
-                  insurance and 24/7 roadside assistance.
+                  {
+                    "Rest easy knowing you're covered with up to $1M in liability insurance and 24/7 roadside assistance."
+                  }
                 </div>
               </div>
 
@@ -143,8 +150,9 @@ const HostPage = () => {
                   List your car
                 </h3>
                 <p className="mt-4 text-base text-gray-600">
-                  Create a free listing in minutes. Add photos, set your price,
-                  and share your car's features.
+                  {
+                    "Create a free listing in minutes. Add photos, set your price, and share your car's features."
+                  }
                 </p>
               </div>
 

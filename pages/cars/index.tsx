@@ -1,26 +1,21 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { Calendar, MapPin, Filter, ChevronDown, Star} from "lucide-react";
-import cars from '../../data/cars.json'; // Import the JSON file
-import { Car } from '../../types/carType';
+import { Calendar, MapPin, Filter, ChevronDown, Star } from "lucide-react";
+import cars from "../../data/cars.json";
+import Image from "next/image";
 
 const CarListingsPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
 
-  // Sample car data
-  const fetchCarDetails = async (id: string): Promise<Car | null> => {
-    return cars.find(car => car.id.toString() === id) || null;
-  };
-  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header/Navigation */}
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <a href="/" className="text-2xl font-bold text-blue-600">
+            <Link href="/" className="text-2xl font-bold text-blue-600">
               Rentoro
-            </a>
+            </Link>
 
             <div className="flex items-center space-x-6">
               <a href="#" className="text-gray-600 hover:text-blue-600">
@@ -147,37 +142,46 @@ const CarListingsPage = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cars.map((car) => (
-            <Link 
-            key={car.id} 
-            href={`/individual_car/${car.id}`}
-            className="block"
+            <Link
+              key={car.id}
+              href={`/individual_car/${car.id}`}
+              className="block"
             >
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer">
                 {/* Car Image */}
-                <div className="h-48 w-full overflow-hidden">
-                  <img 
-                    src={car.image} 
-                    alt={car.name} 
+                <div className="h-48 w-full overflow-hidden relative">
+                  <Image
+                    src={car.image}
+                    alt={car.name}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    fill
                   />
                 </div>
 
                 {/* Car Details */}
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-xl font-bold">{car.name} ({car.year})</h3>
+                    <h3 className="text-xl font-bold">
+                      {car.name} ({car.year})
+                    </h3>
                     <div className="flex items-center">
-                      <Star className="text-yellow-500 mr-1" fill="#fbbf24" size={18} />
+                      <Star
+                        className="text-yellow-500 mr-1"
+                        fill="#fbbf24"
+                        size={18}
+                      />
                       <span className="text-sm">{car.rating}</span>
                     </div>
                   </div>
                   <p className="text-gray-600 mb-2">{car.location}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-lg font-semibold text-blue-600">${car.price}/day</span>
+                    <span className="text-lg font-semibold text-blue-600">
+                      ${car.price}/day
+                    </span>
                     <div className="flex space-x-1">
                       {car.features.slice(0, 2).map((feature, index) => (
-                        <span 
-                          key={index} 
+                        <span
+                          key={index}
                           className="bg-gray-100 text-xs px-2 py-1 rounded"
                         >
                           {feature}
