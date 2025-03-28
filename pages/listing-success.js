@@ -23,8 +23,9 @@ const ListingSuccess = () => {
           </h1>
 
           <p className="text-gray-600 mb-8">
-            Congratulations! Your car is now listed on Rentoro. You'll be
-            notified when someone requests to book your car.
+            {
+              "Congratulations! Your car is now listed on Rentoro. You'll be notified when someone requests to book your car."
+            }
           </p>
 
           <div className="space-y-4">

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { Calendar, Search, MapPin } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import SignUpModal from "../components/auth/signup";
 import SignInModal from "../components/authSignin/signin";
 import { useRouter } from "next/router";
@@ -199,12 +199,14 @@ const HomePage = () => {
                 key={car}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
               >
-                <div className="relative h-64">
-                  <img
+                <div className="relative h-64 ">
+                  <Image
                     src={"/images/2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg"}
                     alt="Car"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    fill
                   />
+
                   <div className="absolute top-4 right-4">
                     <button className="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow">
                       <svg

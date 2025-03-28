@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import {
   ArrowRight,
   Camera,
-  Calendar,
   DollarSign,
   Shield,
   Star,
@@ -50,16 +49,16 @@ const ListYourCar = () => {
     }));
   };
 
-  const handleAvailabilityChange = (e) => {
-    const { name, value } = e.target;
-    setCarDetails((prev) => ({
-      ...prev,
-      availability: {
-        ...prev.availability,
-        [name]: value,
-      },
-    }));
-  };
+  // const handleAvailabilityChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setCarDetails((prev) => ({
+  //     ...prev,
+  //     availability: {
+  //       ...prev.availability,
+  //       [name]: value,
+  //     },
+  //   }));
+  // };
 
   const handlePricingChange = (e) => {
     const { name, value } = e.target;
@@ -339,11 +338,12 @@ const ListYourCar = () => {
               <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
                 {photoUrls.map((url, index) => (
                   <div key={index} className="relative group">
-                    <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-                      <img
+                    <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden relative">
+                      <Image
                         src={url}
                         alt={`Car photo ${index + 1}`}
                         className="w-full h-full object-cover"
+                        fill
                       />
                     </div>
                     <button
@@ -580,7 +580,7 @@ const ListYourCar = () => {
                 Earn extra income
               </h3>
               <p className="text-gray-600">
-                Make money when you're not using your car
+                {"Make money when you're not using your car "}
               </p>
             </div>
             <div className="text-center">
@@ -589,13 +589,13 @@ const ListYourCar = () => {
                 Insurance included
               </h3>
               <p className="text-gray-600">
-                $1M liability insurance and 24/7 support
+                {"$1M liability insurance and 24/7 support"}
               </p>
             </div>
             <div className="text-center">
               <Star className="h-12 w-12 text-[#593CFB] mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                You're in control
+                Youre in control
               </h3>
               <p className="text-gray-600">
                 Set your own price and availability

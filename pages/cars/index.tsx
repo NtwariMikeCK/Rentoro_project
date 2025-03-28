@@ -1,16 +1,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { Calendar, MapPin, Filter, ChevronDown, Star } from "lucide-react";
-import cars from "../../data/cars.json"; // Import the JSON file
-import { Car } from "../../types/carType";
+import cars from "../../data/cars.json";
+import Image from "next/image";
 
 const CarListingsPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
-
-  // Sample car data
-  const fetchCarDetails = async (id: string): Promise<Car | null> => {
-    return cars.find((car) => car.id.toString() === id) || null;
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -18,9 +13,9 @@ const CarListingsPage = () => {
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <a href="/" className="text-5xl font-bold text-black">
+            <Link href="/" className="text-2xl font-bold text-blue-600">
               Rentoro
-            </a>
+            </Link>
 
             <div className="flex items-center space-x-6">
               <a
