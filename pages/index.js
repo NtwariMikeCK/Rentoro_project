@@ -5,6 +5,7 @@ import SignUpModal from "../components/auth/signup";
 import SignInModal from "../components/authSignin/signin";
 import { useRouter } from "next/router";
 import Testimonials from "../components/Testimonials";
+import Image from "next/image";
 import {
   CurrencyDollarIcon,
   ShieldCheckIcon,
@@ -64,12 +65,15 @@ const HomePage = () => {
           </div>
           <div className="flex items-center space-x-8">
             <a
-              href="#"
+              href="/host"
               className="text-white bg-[#593CFB] hover:bg-[#452CC9] px-4 py-2 rounded-md font-medium"
             >
               Become a host
             </a>
-            <button className="bg-[#593CFB] text-white px-4 py-2 rounded-md font-medium hover:bg-[#452CC9]">
+            <button
+              onClick={openSignUpModal}
+              className="bg-[#593CFB] text-white px-4 py-2 rounded-md font-medium hover:bg-[#452CC9]"
+            >
               Sign up
             </button>
             <button className="text-blue-600 border border-blue-600 px-4 py-2 rounded-md font-medium hover:bg-[#452CC9] hover:text-white">

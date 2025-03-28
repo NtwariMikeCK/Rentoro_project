@@ -197,7 +197,7 @@ const CarListingsPage = () => {
                       {car.features.slice(0, 2).map((feature, index) => (
                         <span
                           key={index}
-                          className="bg-gray-100 text-xs px-2 py-1 rounded"
+                          className="bg-gray-500 text-xs px-2 py-1 rounded"
                         >
                           {feature}
                         </span>

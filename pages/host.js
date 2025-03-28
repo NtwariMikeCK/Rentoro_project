@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, Shield, Calendar, DollarSign } from "lucide-react";
 import Image from "next/image";
+import HeroSection from "../components/HeroSection";
 
 const HostPage = () => {
   return (
@@ -27,54 +28,14 @@ const HostPage = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative bg-gray-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 bg-gray-50 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
-            <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h1 className="text-5xl font-black text-gray-900 sm:text-6xl md:text-7xl">
-                    Earn money by sharing your car
-                  </h1>
-                  <p className="mt-6 text-xl text-gray-600 max-w-xl">
-                    {
-                      "Share your car whenever you're not using it and earn an average of $10,516 annually in Rwanda*"
-                    }
-                  </p>
-                  <div className="mt-10">
-                    <Link href="/list-your-car">
-                      <button className="bg-[#593CFB] hover:bg-[#452CC9] text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors inline-flex items-center">
-                        Get started now
-                        <ArrowRight className="ml-2" size={20} />
-                      </button>
-                    </Link>
-                  </div>
-                  <p className="mt-4 text-sm text-gray-500">
-                    {
-                      "*Based on annual earnings of hosts in Rwanda sharing one car"
-                    }
-                  </p>
-                </div>
-                <div className="relative">
-                  <Image
-                    src="/images/host with a carl.png"
-                    alt="Host with car"
-                    className="rounded-2xl shadow-2xl"
-                    fill
-                  />
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
-      </div>
+      <HeroSection />
 
       {/* Benefits Section */}
       <div className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-gray-900">
-              Why share your car on Rentoro?
+              Maximize Your Vehicle's Potential with Rentoro
             </h2>
           </div>
 
@@ -86,29 +47,13 @@ const HostPage = () => {
                     <DollarSign className="h-6 w-6" />
                   </div>
                   <p className="ml-16 text-xl font-bold text-gray-900">
-                    Earn extra income
+                    Optimize Your Vehicle's Earning Potential
                   </p>
                 </div>
                 <div className="mt-4 ml-16 text-base text-gray-600">
-                  {
-                    "Make money sharing your car when you're not using it. You're in control of your availability, pricing, and who can book."
-                  }
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="relative">
-                  <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#593CFB] text-white">
-                    <Shield className="h-6 w-6" />
-                  </div>
-                  <p className="ml-16 text-xl font-bold text-gray-900">
-                    Insurance included
-                  </p>
-                </div>
-                <div className="mt-4 ml-16 text-base text-gray-600">
-                  {
-                    "Rest easy knowing you're covered with up to $1M in liability insurance and 24/7 roadside assistance."
-                  }
+                  Transform your idle vehicle into a revenue stream. Maintain
+                  complete control over your listing, including availability,
+                  pricing, and booking preferences.
                 </div>
               </div>
 
@@ -118,12 +63,30 @@ const HostPage = () => {
                     <Calendar className="h-6 w-6" />
                   </div>
                   <p className="ml-16 text-xl font-bold text-gray-900">
-                    Flexible schedule
+                    Unparalleled Scheduling Flexibility
                   </p>
                 </div>
                 <div className="mt-4 ml-16 text-base text-gray-600">
-                  Share your car only when it works for you. Block off times
-                  when you need your car for personal use.
+                  Seamlessly integrate car sharing into your lifestyle.
+                  Customize your availability, easily block out personal use
+                  times, and maintain complete control over your vehicle's
+                  schedule.
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="relative">
+                  <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#593CFB] text-white">
+                    <Shield className="h-6 w-6" />
+                  </div>
+                  <p className="ml-16 text-xl font-bold text-gray-900">
+                    Comprehensive Platform Protection
+                  </p>
+                </div>
+                <div className="mt-4 ml-16 text-base text-gray-600">
+                  Experience peace of mind with our robust verification
+                  processes, secure payment systems, and dedicated support to
+                  ensure a safe and reliable car sharing experience.
                 </div>
               </div>
             </div>
@@ -131,54 +94,55 @@ const HostPage = () => {
         </div>
       </div>
 
-      {/* How It Works Section */}
-      <div className="bg-gray-50 py-24">
+      <div className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-gray-900">
-              Getting started is easy
+              Your Path to Effortless Car Sharing
             </h2>
           </div>
 
           <div className="mt-20">
             <div className="grid grid-cols-1 gap-16 lg:grid-cols-3">
               <div className="text-center">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-[#593CFB] bg-opacity-10 mx-auto">
-                  <span className="text-2xl font-bold text-[#593CFB]">1</span>
+                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-[#6A5ACD] to-[#483D8B] mx-auto shadow-md">
+                  <span className="text-2xl font-bold text-white">1</span>
                 </div>
                 <h3 className="mt-6 text-xl font-bold text-gray-900">
-                  List your car
+                  Showcase Your Vehicle
                 </h3>
                 <p className="mt-4 text-base text-gray-600">
-                  {
-                    "Create a free listing in minutes. Add photos, set your price, and share your car's features."
-                  }
+                  Craft a compelling, detailed listing in minutes. Highlight
+                  your car's unique features, upload professional photos, and
+                  set competitive pricing.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-[#593CFB] bg-opacity-10 mx-auto">
-                  <span className="text-2xl font-bold text-[#593CFB]">2</span>
+                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-[#6A5ACD] to-[#483D8B] mx-auto shadow-md">
+                  <span className="text-2xl font-bold text-white">2</span>
                 </div>
                 <h3 className="mt-6 text-xl font-bold text-gray-900">
-                  Get bookings
+                  Manage Bookings Seamlessly
                 </h3>
                 <p className="mt-4 text-base text-gray-600">
-                  Respond to booking requests and coordinate pickup with guests
-                  through our secure messaging system.
+                  Leverage our intuitive platform to review and respond to
+                  booking requests. Coordinate logistics effortlessly through
+                  our secure, integrated messaging system.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-[#593CFB] bg-opacity-10 mx-auto">
-                  <span className="text-2xl font-bold text-[#593CFB]">3</span>
+                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-br from-[#6A5ACD] to-[#483D8B] mx-auto shadow-md">
+                  <span className="text-2xl font-bold text-white">3</span>
                 </div>
                 <h3 className="mt-6 text-xl font-bold text-gray-900">
-                  Get paid
+                  Maximize Your Earnings
                 </h3>
                 <p className="mt-4 text-base text-gray-600">
-                  Earn money every time someone books your car. Get paid
-                  directly to your bank account.
+                  Experience hassle-free income generation. Receive direct
+                  deposits to your bank account, transforming your vehicle into
+                  a valuable asset.
                 </p>
               </div>
             </div>
@@ -187,20 +151,20 @@ const HostPage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-[#593CFB]">
+      <div className="bg-[#FDFBFF] text-black">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
-              Ready to start earning?
+            <h2 className="text-3xl font-bold sm:text-4xl">
+              Unlock Your Vehicle's Earning Potential
             </h2>
-            <p className="mt-4 text-xl text-purple-100">
-              Join thousands of hosts who are already sharing their cars on
-              Rentoro
+            <p className="mt-4 text-xl text-gray-600">
+              Join our thriving community of hosts and turn your car into a
+              profitable opportunity
             </p>
             <div className="mt-8">
               <Link href="/list-your-car">
-                <button className="bg-white text-[#593CFB] hover:bg-gray-50 px-8 py-4 rounded-lg font-medium text-lg transition-colors inline-flex items-center">
-                  List your car now
+                <button className="bg-white text-[#22223B] hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center shadow-lg">
+                  Start Your Listing Now
                   <ArrowRight className="ml-2" size={20} />
                 </button>
               </Link>
