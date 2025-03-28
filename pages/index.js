@@ -4,6 +4,13 @@ import { Calendar, Search, MapPin } from "lucide-react";
 import SignUpModal from "../components/auth/signup";
 import SignInModal from "../components/authSignin/signin";
 import { useRouter } from "next/router";
+import Testimonials from "../components/Testimonials";
+import {
+  CurrencyDollarIcon,
+  ShieldCheckIcon,
+  CalendarIcon,
+} from "@heroicons/react/24/outline";
+import CarSharingSection from "../components/CarSharingSection";
 
 const HomePage = () => {
   const router = useRouter();
@@ -36,15 +43,16 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative min-h-[800px]">
-        {/* Background Image */}
+      <div className="relative min-h-[800px] overflow-hidden">
+        {/* Background Image with Gradient Overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center z-0"
+          className="absolute inset-0 bg-cover bg-center z-0 transform scale-105 blur-sm"
           style={{
             backgroundImage: "url('/images/pexels-shkrabaanthony-7144209.jpg')",
+            backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0  bg-opacity-30"></div>
+          <div className="absolute inset-0 bg-gradient-to-r"></div>
         </div>
 
         {/* Navigation */}
@@ -55,111 +63,129 @@ const HomePage = () => {
             </Link>
           </div>
           <div className="flex items-center space-x-8">
-            <Link
-              href="/host"
-              className="text-white hover:text-gray-200 text-base font-medium"
+            <a
+              href="#"
+              className="text-white bg-[#593CFB] hover:bg-[#452CC9] px-4 py-2 rounded-md font-medium"
             >
               Become a host
-            </Link>
-            <button
-              onClick={openSignUpModal}
-              className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2.5 rounded-lg font-medium transition-colors"
-            >
+            </a>
+            <button className="bg-[#593CFB] text-white px-4 py-2 rounded-md font-medium hover:bg-[#452CC9]">
               Sign up
             </button>
-            <button
-              onClick={openSignInModal}
-              className="text-white hover:text-gray-200 font-medium"
-            >
+            <button className="text-blue-600 border border-blue-600 px-4 py-2 rounded-md font-medium hover:bg-[#452CC9] hover:text-white">
               Log in
             </button>
           </div>
         </nav>
 
-        {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-8 pt-32 max-w-7xl mx-auto">
-          <h2 className="text-6xl font-black text-white mb-8 max-w-3xl">
-            Find your drive
-          </h2>
-          <p className="text-xl text-white mb-12 max-w-2xl font-medium">
-            Explore the largest car sharing marketplace in Rwanda
-          </p>
+        {/* Hero Content with Enhanced Typography */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-8 pt-32 max-w-7xl mx-auto text-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-4xl">
+            <h2
+              className="text-6xl font-extrabold  mb-6 
+              bg-gradient-to-r from-white to-gray-300 
+              bg-clip-text text-transparent 
+              leading-tight tracking-tight"
+            >
+              Find Your Perfect Drive
+            </h2>
+            <p
+              className="text-xl text-white/90 mb-12 max-w-2xl mx-auto font-medium 
+              leading-relaxed tracking-wide"
+            >
+              Explore Rwanda's most comprehensive car sharing marketplace with
+              seamless booking and unmatched convenience
+            </p>
 
-          {/* Search Form */}
-          <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-4xl">
-            <form onSubmit={handleSearch}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="relative">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Where
-                  </label>
+            {/* Search Form with Refined Design */}
+            <div className="bg-white rounded-xl shadow-2xl border border-gray-100 p-8 w-full max-w-4xl">
+              <form onSubmit={handleSearch} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="relative">
-                    <MapPin
-                      className="absolute left-4 top-3.5 text-gray-400"
-                      size={20}
-                    />
-                    <input
-                      type="text"
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#593CFB] text-gray-900 placeholder-gray-500"
-                      placeholder="City, airport, or address"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      required
-                    />
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Where
+                    </label>
+                    <div className="relative">
+                      <MapPin
+                        className="absolute left-4 top-3.5 text-gray-400"
+                        size={20}
+                      />
+                      <input
+                        type="text"
+                        className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-lg 
+                        focus:outline-none focus:ring-2 focus:ring-[#593CFB] focus:border-transparent 
+                        text-gray-900 placeholder-gray-500 transition-all duration-300"
+                        placeholder="City, airport, or address"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      From
+                    </label>
+                    <div className="relative">
+                      <Calendar
+                        className="absolute left-4 top-3.5 text-gray-400"
+                        size={20}
+                      />
+                      <input
+                        type="date"
+                        className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-lg 
+                        focus:outline-none focus:ring-2 focus:ring-[#593CFB] focus:border-transparent 
+                        text-gray-900 transition-all duration-300"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        required
+                        min={new Date().toISOString().split("T")[0]}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Until
+                    </label>
+                    <div className="relative">
+                      <Calendar
+                        className="absolute left-4 top-3.5 text-gray-400"
+                        size={20}
+                      />
+                      <input
+                        type="date"
+                        className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-lg 
+                        focus:outline-none focus:ring-2 focus:ring-[#593CFB] focus:border-transparent 
+                        text-gray-900 transition-all duration-300"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        required
+                        min={
+                          startDate || new Date().toISOString().split("T")[0]
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    From
-                  </label>
-                  <div className="relative">
-                    <Calendar
-                      className="absolute left-4 top-3.5 text-gray-400"
-                      size={20}
-                    />
-                    <input
-                      type="date"
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#593CFB] text-gray-900"
-                      value={startDate}
-                      onChange={(e) => setStartDate(e.target.value)}
-                      required
-                      min={new Date().toISOString().split("T")[0]}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Until
-                  </label>
-                  <div className="relative">
-                    <Calendar
-                      className="absolute left-4 top-3.5 text-gray-400"
-                      size={20}
-                    />
-                    <input
-                      type="date"
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#593CFB] text-gray-900"
-                      value={endDate}
-                      onChange={(e) => setEndDate(e.target.value)}
-                      required
-                      min={startDate || new Date().toISOString().split("T")[0]}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="mt-6 w-full bg-[#593CFB] hover:bg-[#452CC9] text-white font-medium py-3.5 px-4 rounded-lg transition-colors"
-              >
-                Search for cars
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="mt-6 w-full bg-[#593CFB] hover:bg-[#452CC9] 
+                  text-white font-semibold py-4 px-4 rounded-lg 
+                  transition-all duration-300 transform hover:-translate-y-1 
+                  shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 
+                  focus:ring-offset-2 focus:ring-[#593CFB]"
+                >
+                  Search for Cars
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+
       {/* Featured Cars Section */}
       <div className="py-20 bg-gray-50">
         <div className="container mx-auto px-8">
@@ -188,6 +214,9 @@ const HomePage = () => {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
+                        className="transition-colors duration-300 ease-in-out 
+                   fill-none hover:fill-[#452CC9] 
+                   cursor-pointer"
                       >
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                       </svg>
@@ -231,60 +260,67 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       {/* How It Works Section */}
       <div className="py-20 bg-white">
         <div className="container mx-auto px-8">
-          <h2 className="text-4xl font-bold mb-16 text-gray-900">
+          <h2 className="text-5xl font-bold mb-16 text-gray-900">
             How Rentoro works
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-              <div className="mb-6">
-                <img
-                  src="/images/browse-cars.svg"
-                  alt="Browse cars"
-                  className="w-16 h-16"
-                />
+            <div className="bg-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="flex items-center justify-center mb-6">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500 shadow-md">
+                  <img
+                    src="/images/pexels-rdne-8052221.jpg"
+                    alt="Browse cars"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">
-                Browse cars
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 text-center">
+                Browse Cars
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-800 leading-relaxed text-center">
                 Find the perfect car for your next adventure. Filter by make,
                 model, price, and more.
               </p>
             </div>
 
-            <div>
-              <div className="mb-6">
-                <img
-                  src="/images/book-instantly.svg"
-                  alt="Book instantly"
-                  className="w-16 h-16"
-                />
+            <div className="bg-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="flex items-center justify-center mb-6">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500 shadow-md">
+                  <img
+                    src="/images/Online-car-rental-booking.png"
+                    alt="Book instantly"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 text-center">
                 Book instantly
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-800 leading-relaxed text-center">
                 Book the car you want with instant confirmation. No waiting for
                 approval needed.
               </p>
             </div>
 
-            <div>
-              <div className="mb-6">
-                <img
-                  src="/images/hit-the-road.svg"
-                  alt="Hit the road"
-                  className="w-16 h-16"
-                />
+            <div className="bg-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="flex items-center justify-center mb-6">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500 shadow-md">
+                  <img
+                    src="/images/pexels-vera-zaharieva-1766494-8127187.jpg"
+                    alt="Hit the road"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 text-center">
                 Hit the road
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-800 leading-relaxed text-center">
                 Pick up your car at the agreed location and start your adventure
                 with confidence.
               </p>
@@ -293,161 +329,9 @@ const HomePage = () => {
         </div>
       </div>
       {/* Become a Host Section */}
-      <div className="relative py-24 bg-gray-50">
-        <div className="container mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                Share your car, earn extra income
-              </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Join thousands of hosts in Rwanda who are earning money by
-                sharing their cars on Rentoro.
-              </p>
-              <div className="space-y-6 mb-10">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-[#593CFB] bg-opacity-10 flex items-center justify-center">
-                      <svg
-                        className="w-6 h-6 text-[#593CFB]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 mb-1">
-                      Earn money sharing your car
-                    </h3>
-                    <p className="text-gray-600">
-                      Average hosts earn $10,516 annually sharing their car
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-[#593CFB] bg-opacity-10 flex items-center justify-center">
-                      <svg
-                        className="w-6 h-6 text-[#593CFB]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 mb-1">
-                      Insurance included
-                    </h3>
-                    <p className="text-gray-600">
-                      Up to $1M in liability insurance and 24/7 support
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-[#593CFB] bg-opacity-10 flex items-center justify-center">
-                      <svg
-                        className="w-6 h-6 text-[#593CFB]"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 mb-1">
-                      You're in control
-                    </h3>
-                    <p className="text-gray-600">
-                      Set your own price, availability, and rules
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <Link href="/list-your-car">
-                <button className="bg-[#593CFB] hover:bg-[#452CC9] text-white font-medium py-3.5 px-8 rounded-lg transition-colors">
-                  Get started
-                </button>
-              </Link>
-            </div>
-            <div className="relative">
-              <img
-                src="/images/host with a car.png"
-                alt="Host with car"
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <CarSharingSection />
       {/* Testimonials Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">What our users say</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Hear from hosts and renters who use Rentoro.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
-                <div>
-                  <h4 className="font-bold">Jean Claude</h4>
-                  <p className="text-gray-600 text-sm">Car Owner, Kigali</p>
-                </div>
-              </div>
-              <p className="text-gray-600">
-                "I've been able to make extra income from my car when I'm not
-                using it. The platform is easy to use and support is always
-                there when I need help."
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
-                <div>
-                  <h4 className="font-bold">Sophia M.</h4>
-                  <p className="text-gray-600 text-sm">Traveler, USA</p>
-                </div>
-              </div>
-              <p className="text-gray-600">
-                "Renting a car through Rentoro made my trip to Rwanda so much
-                more enjoyable. The process was smooth, and I got a great car
-                for a reasonable price."
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Testimonials />
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-8">
@@ -593,11 +477,12 @@ const HomePage = () => {
           </div>
         </div>
       </footer>
+      {/* Existing Modals */}
       <SignUpModal
         isOpen={isSignUpModalOpen}
         onClose={() => setIsSignUpModalOpen(false)}
       />
-      <SignInModal 
+      <SignInModal
         isOpen={isSignInModalOpen}
         onClose={() => setIsSignInModalOpen(false)}
       />

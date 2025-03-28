@@ -26,11 +26,9 @@ const SignInModal = ({ isOpen, onClose }) => {
         {/* Modal content */}
         <div className="p-8">
           <h2 className="text-[32px] font-bold text-center text-gray-900 mb-2">
-            Login in
+            Login
           </h2>
-          <p className="text-center text-gray-600 mb-8">
-            Welcome back
-          </p>
+          <p className="text-center text-gray-600 mb-8">Welcome back</p>
 
           {/* Sign-up options */}
           <div className="space-y-3">
@@ -90,9 +88,10 @@ const SignInModal = ({ isOpen, onClose }) => {
           {/* Sign up section */}
           <div className="mt-8 pt-6 border-t border-gray-200 text-center">
             <p className="text-gray-600 mb-2">Don't have an account?</p>
-            <button 
+            <button
               onClick={openSignUpModal}
-              className="font-semibold text-[#593CFB] hover:text-[#452CC9] transition-colors">
+              className="font-semibold text-[#593CFB] hover:text-[#452CC9] transition-colors"
+            >
               Sign up
             </button>
           </div>
@@ -118,8 +117,8 @@ const SignInModal = ({ isOpen, onClose }) => {
           </div>
         </div>
       </div>
-      
-      <SignUpModal 
+
+      <SignUpModal
         isOpen={isSignUpModalOpen}
         onClose={() => setIsSignUpModalOpen(false)}
       />
