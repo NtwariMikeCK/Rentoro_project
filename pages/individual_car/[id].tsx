@@ -12,6 +12,7 @@ import {
   DollarSign, 
   User 
 } from 'lucide-react';
+import Navbar from '../../components/navbar'; // Import the Navbar component
 import cars from '../../data/cars.json';
 import { Car } from '../../types/carType';
 
@@ -29,6 +30,7 @@ const CarDetailsPage: React.FC<{ car: Car }> = ({ car }) => {
   if (!car) {
     return (
       <div className="container mx-auto px-4 py-8">
+        <Navbar isDarkBackground={false} /> {/* Use blue text on white background */}
         <h1 className="text-2xl font-bold text-red-600">Car Not Found</h1>
         <button 
           onClick={() => router.push('/')} 
@@ -65,8 +67,10 @@ const CarDetailsPage: React.FC<{ car: Car }> = ({ car }) => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="container mx-auto   px-4 py-8 bg-white">
+      <Navbar /> {/* Add Navbar at the top */}
+      
+      <div className="max-w-7xl mx-auto shadow-lg rounded-lg overflow-hidden mt-8"> {/* Added mt-8 for spacing after navbar */}
         {/* Image Gallery */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Main Image */}
@@ -102,17 +106,17 @@ const CarDetailsPage: React.FC<{ car: Car }> = ({ car }) => {
           </div>
 
           {/* Car Details */}
-          <div className="p-6">
-            <h1 className="text-3xl font-bold mb-4">
+          <div className="p-6 text-gray-900">
+            <h1 className="text-3xl font-bold mb-4 text-black">
               {car.year} {car.name} {car.features}
             </h1>
             
             {/* Price and Availability */}
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-6 text-gray-900">
               <div>
                 <p className="text-2xl font-bold text-blue-600">
                   ${car.price.toLocaleString()} 
-                  <span className="text-sm text-gray-500 ml-2">per day</span>
+                  <span className="text-sm  ml-2 text-gray-900">per day</span>
                 </p>
                 <p className="text-sm text-green-600">Available</p>
               </div>
@@ -160,7 +164,7 @@ const CarDetailsPage: React.FC<{ car: Car }> = ({ car }) => {
         </div>
 
         {/* Host Information */}
-        <div className="bg-gray-50 p-6 border-t">
+        <div className="bg-gray-50 p-6 border-t text-black">
           <h2 className="text-2xl font-bold mb-4">HOSTED By</h2>
           <div className="flex items-center space-x-6">
             <Image 
@@ -172,7 +176,7 @@ const CarDetailsPage: React.FC<{ car: Car }> = ({ car }) => {
             />
             <div>
               <h3 className="text-xl font-semibold">{host.name}</h3>
-              <div className="flex items-center space-x-3 text-gray-600">
+              <div className="flex items-center space-x-3 text-gray-800">
                 <div className="flex items-center">
                   <Star className="w-5 h-5 text-yellow-500 mr-1" />
                   <span>{host.rating} Rating</span>

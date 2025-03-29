@@ -13,7 +13,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4">
+    <div className="container fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-[440px] relative">
         {/* Close button */}
         <button
@@ -26,10 +26,10 @@ const SignUpModal = ({ isOpen, onClose }) => {
         {/* Modal content */}
         <div className="p-8">
           <h2 className="text-[32px] font-bold text-center text-gray-900 mb-2">
-            Welcome to Rentoro
+            Signup
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            Find the perfect vehicle for your next adventure
+            Welcome to Rentoro
           </p>
 
           {/* Sign-up options */}

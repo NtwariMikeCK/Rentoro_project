@@ -21,7 +21,7 @@ const HeroSection = () => {
 
             <p className="text-xl text-gray-600 max-w-xl">
               Transform your idle car into a profitable asset. Earn an average
-              of $10,516 annually in Rwanda*
+              of $1,516 annually in Rwanda*
             </p>
 
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">

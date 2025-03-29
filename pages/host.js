@@ -3,29 +3,14 @@ import Link from "next/link";
 import { ArrowRight, Shield, Calendar, DollarSign } from "lucide-react";
 import Image from "next/image";
 import HeroSection from "../components/HeroSection";
+import NavbarHost from "../components/navbarHost"; // Import the NavbarHost component
 
 const HostPage = () => {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-8 py-6 bg-white border-b">
-        <Link href="/">
-          <h1 className="text-3xl font-black text-gray-900">Rentoro</h1>
-        </Link>
-        <div className="flex items-center space-x-6">
-          <Link
-            href="/login"
-            className="text-gray-600 hover:text-gray-900 font-medium"
-          >
-            Log in
-          </Link>
-          <Link href="/signup">
-            <button className="bg-[#593CFB] hover:bg-[#452CC9] text-white px-6 py-2.5 rounded-lg font-medium transition-colors">
-              Sign up
-            </button>
-          </Link>
-        </div>
-      </nav>
+      {/* Using the imported NavbarHost component */}
+      <NavbarHost isHostPage={true} /> {/*import NavbarHost from './../components/navbarHost/index'; */}
+
 
       {/* Hero Section */}
       <HeroSection />
