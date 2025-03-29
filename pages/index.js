@@ -13,6 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import CarSharingSection from "../components/CarSharingSection";
 
+
 const HomePage = () => {
   const router = useRouter();
   const [location, setLocation] = useState("");

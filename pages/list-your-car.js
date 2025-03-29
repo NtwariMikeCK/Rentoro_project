@@ -10,6 +10,7 @@ import {
   Loader2,
 } from "lucide-react";
 import Image from "next/image";
+import NavbarHost from "../components/navbarHost"; // Import the NavbarHost component
 
 const ListYourCar = () => {
   const router = useRouter();
