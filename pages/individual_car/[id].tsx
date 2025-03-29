@@ -9,13 +9,14 @@ import {
   Shield, 
   Star, 
   CalendarDays, 
-  DollarSign, 
   User 
 } from 'lucide-react';
 import cars from '../../data/cars.json';
 import { Car } from '../../types/carType';
+import React from "react";
 
-// Mock function to fetch car details (replace with your actual data fetching method)
+
+
 const fetchCarDetails = async (id: string): Promise<Car | null> => {
   return cars.find(car => car.id.toString() === id) || null;
 };
@@ -25,7 +26,6 @@ const CarDetailsPage: React.FC<{ car: Car }> = ({ car }) => {
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(0);
 
-  // Handle case where car is not found
   if (!car) {
     return (
       <div className="container mx-auto px-4 py-8">

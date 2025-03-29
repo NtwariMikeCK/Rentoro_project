@@ -1,5 +1,6 @@
 import React from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 const Testimonials = () => {
   const testimonials = [
@@ -7,7 +8,7 @@ const Testimonials = () => {
       name: "Jean Claude",
       role: "Car Owner, Kigali",
       quote:
-        "I've been able to make extra income from my car when I'm not using it. The platform is easy to use and support is always there when I need help.",
+        "Ive been able to make extra income from my car when Im not using it. The platform is easy to use and support is always there when I need help.",
       avatar: "/images/pexels-nappy-936119.jpg",
     },
     {
@@ -45,15 +46,16 @@ const Testimonials = () => {
               </div>
 
               <p className="text-gray-700 text-lg mb-6 italic">
-                "{testimonial.quote}"
+                {testimonial.quote}
               </p>
 
               <div className="flex items-center">
-                <div className="w-16 h-16 mr-5">
-                  <img
+                <div className="w-16 h-16 mr-5 relativ">
+                  <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
                     className="w-full h-full object-cover rounded-full border-4 border-purple-100 group-hover:border-purple-200 transition-all"
+                    fill
                   />
                 </div>
                 <div>

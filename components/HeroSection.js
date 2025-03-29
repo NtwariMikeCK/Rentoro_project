@@ -12,7 +12,7 @@ const HeroSection = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
               <ShieldCheck className="mr-2 h-5 w-5" />
-              Trusted by Rwanda's Car Owners
+              Trusted by Rwandas Car Owners
             </div>
 
             <h1 className="text-2xl font-extrabold text-gray-900 sm:text-6xl md:text-7xl leading-tight">
@@ -76,7 +76,7 @@ const HeroSection = () => {
               High Earnings
             </h3>
             <p className="text-gray-600">
-              Maximize your car's earning potential
+              Maximize your cars earning potential
             </p>
           </div>
 

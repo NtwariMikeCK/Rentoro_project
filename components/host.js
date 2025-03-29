@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Shield, Calendar, DollarSign } from "lucide-react";
-import Image from "next/image";
 import HeroSection from "../components/HeroSection";
 
 const HostPage = () => {
@@ -9,7 +8,7 @@ const HostPage = () => {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="flex items-center justify-between px-8 py-6 bg-white border-b">
-        <Link href="/">
+        <Link href="/public">
           <h1 className="text-3xl font-black text-gray-900">Rentoro</h1>
         </Link>
         <div className="flex items-center space-x-6">
@@ -35,7 +34,7 @@ const HostPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-gray-900">
-              Maximize Your Vehicle's Potential with Rentoro
+              Maximize Your Vehicles Potential with Rentoro
             </h2>
           </div>
 
@@ -47,7 +46,7 @@ const HostPage = () => {
                     <DollarSign className="h-6 w-6" />
                   </div>
                   <p className="ml-16 text-xl font-bold text-gray-900">
-                    Optimize Your Vehicle's Earning Potential
+                    Optimize Your Vehicles Earning Potential
                   </p>
                 </div>
                 <div className="mt-4 ml-16 text-base text-gray-600">
@@ -69,7 +68,7 @@ const HostPage = () => {
                 <div className="mt-4 ml-16 text-base text-gray-600">
                   Seamlessly integrate car sharing into your lifestyle.
                   Customize your availability, easily block out personal use
-                  times, and maintain complete control over your vehicle's
+                  times, and maintain complete control over your vehicles
                   schedule.
                 </div>
               </div>
@@ -113,8 +112,8 @@ const HostPage = () => {
                 </h3>
                 <p className="mt-4 text-base text-gray-600">
                   Craft a compelling, detailed listing in minutes. Highlight
-                  your car's unique features, upload professional photos, and
-                  set competitive pricing.
+                  your cars unique features, upload professional photos, and set
+                  competitive pricing.
                 </p>
               </div>
 
@@ -155,7 +154,7 @@ const HostPage = () => {
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold sm:text-4xl">
-              Unlock Your Vehicle's Earning Potential
+              Unlock Your Vehicles Earning Potential
             </h2>
             <p className="mt-4 text-xl text-gray-600">
               Join our thriving community of hosts and turn your car into a
