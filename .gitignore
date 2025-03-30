@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+=======
+ # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+>>>>>>> 30b5eea (ft/newintergration)
 
 # dependencies
 /node_modules
@@ -31,7 +35,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
+.env
 
 # vercel
 .vercel
@@ -39,3 +43,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.idea*
