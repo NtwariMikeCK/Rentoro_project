@@ -59,7 +59,7 @@ const CarSharingSection = () => {
             ))}
           </div>
 
-          <Link href="/list-your-car">
+          <Link href="/hosts">
             <button className="w-full md:w-auto bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-10 rounded-lg transition-colors shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
               Get Started
             </button>
