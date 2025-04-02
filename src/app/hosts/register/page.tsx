@@ -47,6 +47,10 @@ const ListYourCar = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [photoUrls, setPhotoUrls] = useState<string[]>([]);
 
+  // ADDED: New state variables for license plate validation
+  const [licenseError, setLicenseError] = useState("");
+  const [isLicensePlateValid, setIsLicensePlateValid] = useState(false);
+
   // Modified photo handling
   const handleFilesSelected = (files: File[]) => {
     setSelectedFiles(files);
@@ -62,14 +66,25 @@ const ListYourCar = () => {
     });
   };
 
+  // MODIFIED: Updated to handle license plate validation and formatting
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setCarDetails((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    if (name === "licensePlate") {
+      const formattedValue = formatRwandanLicensePlate(value);
+      setCarDetails((prev) => ({
+        ...prev,
+        [name]: formattedValue,
+      }));
+      validateRwandanLicensePlate(formattedValue);
+    } else {
+      setCarDetails((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handlePricingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +95,7 @@ const ListYourCar = () => {
     }));
   };
 
+  // MODIFIED: Updated to use license plate validation
   const validateStep = (currentStep: number): boolean => {
     switch (currentStep) {
       case 1:
@@ -87,7 +103,7 @@ const ListYourCar = () => {
           !!carDetails.make &&
           !!carDetails.model &&
           !!carDetails.year &&
-          !!carDetails.licensePlate &&
+          isLicensePlateValid && // Use validation state instead of just checking existence
           !!carDetails.location
         );
       case 2:
@@ -97,6 +113,68 @@ const ListYourCar = () => {
       default:
         return false;
     }
+  };
+
+  // ADDED: Validation function for Rwandan license plates
+  const validateRwandanLicensePlate = (plate: string) => {
+    // Remove any spaces for validation
+    const formattedPlate = plate.trim().replace(/\s+/g, "");
+
+    if (!formattedPlate) {
+      setLicenseError("License plate is required");
+      setIsLicensePlateValid(false);
+      return false;
+    }
+
+    // Pattern for standard Rwandan plates: RAA 123A, RAB 123C, etc.
+    const standardPattern = /^RA[A-Z][0-9]{3}[A-Z]$/;
+
+    // Pattern for government plates: GR 123A
+    const governmentPattern = /^GR[0-9]{3}[A-Z]$/;
+
+    // Pattern for diplomatic plates: CD 123A
+    const diplomaticPattern = /^CD[0-9]{3}[A-Z]$/;
+
+    // Pattern for possible numeric endings: RAA 1234
+    const numericEndPattern = /^RA[A-Z][0-9]{4}$/;
+
+    if (
+      standardPattern.test(formattedPlate) ||
+      governmentPattern.test(formattedPlate) ||
+      diplomaticPattern.test(formattedPlate) ||
+      numericEndPattern.test(formattedPlate)
+    ) {
+      setLicenseError("");
+      setIsLicensePlateValid(true);
+      return true;
+    } else {
+      setLicenseError(
+        "Please enter a valid Rwandan license plate (e.g., RAA 123A)"
+      );
+      setIsLicensePlateValid(false);
+      return false;
+    }
+  };
+
+  // ADDED: Formatting function for Rwandan license plates
+  const formatRwandanLicensePlate = (plate: string) => {
+    // Remove existing spaces
+    let value = plate.toUpperCase().replace(/\s/g, "");
+
+    // Different format based on plate type
+    if (value.startsWith("RA")) {
+      // For standard plates: RAA 123A
+      if (value.length > 3) {
+        value = value.substring(0, 3) + " " + value.substring(3);
+      }
+    } else if (value.startsWith("GR") || value.startsWith("CD")) {
+      // For government or diplomatic plates: GR 123A or CD 123A
+      if (value.length > 2) {
+        value = value.substring(0, 2) + " " + value.substring(2);
+      }
+    }
+
+    return value;
   };
 
   const uploadPhotos = async (): Promise<string[]> => {
@@ -138,16 +216,23 @@ const ListYourCar = () => {
     },
     onError: (error: any) => {
       setError(
-        error.response?.data?.message || error.message || "Error saving car",
+        error.response?.data?.message || error.message || "Error saving car"
       );
       toast.error("Error saving car");
     },
   });
 
+  // MODIFIED: Added license plate validation before submission
   const handleSubmit = async () => {
     try {
       setLoading(true);
       setError("");
+
+      // Added license plate validation before submission
+      if (!validateRwandanLicensePlate(carDetails.licensePlate)) {
+        setLoading(false);
+        return; // Stop if license plate is invalid
+      }
 
       // Validate files
       if (selectedFiles.length === 0) {
@@ -297,6 +382,8 @@ const ListYourCar = () => {
                   placeholder="e.g., 2020"
                 />
               </div>
+
+              {/* MODIFIED: Updated license plate input field with validation */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   License plate number
@@ -306,10 +393,19 @@ const ListYourCar = () => {
                   name="licensePlate"
                   value={carDetails.licensePlate}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#593CFB]"
-                  placeholder="Enter license plate number"
+                  onBlur={() =>
+                    validateRwandanLicensePlate(carDetails.licensePlate)
+                  }
+                  className={`w-full px-4 py-3 border-2 ${
+                    licenseError ? "border-red-500" : "border-gray-200"
+                  } rounded-lg focus:outline-none focus:border-[#593CFB]`}
+                  placeholder="Enter license plate number (e.g., RAA 123A)"
                 />
+                {licenseError && (
+                  <p className="mt-1 text-sm text-red-600">{licenseError}</p>
+                )}
               </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Car location
