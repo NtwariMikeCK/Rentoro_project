@@ -8,8 +8,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import request from "@/utils/axios";
 import Image from "next/image";
 import { CircleUserRound } from "lucide-react";
-import {User} from "@/types/carType";
-
+import { User } from "@/types/carType";
 
 export default function NavBar({
   isDark,
@@ -106,7 +105,9 @@ export default function NavBar({
                   )}
                   <h2 className="text-lg font-semibold">{data?.firstName}</h2>
                   <button
-                    className={"cursor-pointer"}
+                    className={
+                      "cursor-pointer text-white bg-[#593CFB] hover:bg-[#452CC9] px-4 py-2 rounded-md font-medium"
+                    }
                     onClick={(e) => {
                       e.preventDefault();
                       mutate();
