@@ -60,9 +60,9 @@ const CheckoutPage = () => {
   ];
 
   // Calculate rental details
-  const calculateRentalDetails = () => {
-    return
-  };
+  // const calculateRentalDetails = () => {
+  //   return;
+  // };
 
   // Validate Pickup Location
   const validateLocation = (location: string) => {
@@ -110,7 +110,7 @@ const CheckoutPage = () => {
     router.push(`/confirmation/${params.id}`);
   };
 
-  const rentalDetails = calculateRentalDetails();
+  // const rentalDetails = calculateRentalDetails();
 
   const { data } = useQuery({
     queryKey: ["cars_single"],
@@ -159,7 +159,7 @@ const CheckoutPage = () => {
                 </div>
               </div>
             </div>
-
+            {/*
             {rentalDetails && (
               <div className="mt-6 bg-white p-4 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold mb-4">Rental Summary</h3>
@@ -183,6 +183,7 @@ const CheckoutPage = () => {
                 </div>
               </div>
             )}
+            */}
           </div>
 
           {/* Checkout Form Section */}

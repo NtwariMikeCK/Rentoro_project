@@ -72,6 +72,14 @@ export default function NavBar({
               Dashboard
             </a>
           )}
+          {token && (
+            <a
+              href="/orders"
+              className="text-white bg-[#593CFB] hover:bg-[#452CC9] px-4 py-2 rounded-md font-medium"
+            >
+              Purchases
+            </a>
+          )}
           {!isHost && (
             <a
               href="/hosts"

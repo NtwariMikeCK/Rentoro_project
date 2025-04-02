@@ -154,6 +154,10 @@ const ListYourCar = () => {
         throw new Error("Please select at least one image");
       }
 
+      if (selectedFiles.length < 3) {
+        throw new Error("Please select at least three image");
+      }
+
       // Upload images
       const uploadedUrls = await uploadPhotos();
 

@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(
     if (error?.response?.status === 401 || error?.response?.status === 403) {
       if (typeof window !== "undefined") {
         localStorage.clear();
-        window.location.href = "/login";
+        window.location.href = "/";
       }
     }
 
