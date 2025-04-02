@@ -9,6 +9,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import NotFound from "@/components/NotFound";
 import Image from "next/image";
+import returnImage from "@/lib/returnImages";
 
 function UserOrders({ orders }: { orders: UserRequest[] }) {
   const [selectedOrder, setSelectedOrder] = useState<string | null>(null);
@@ -64,17 +65,21 @@ function UserOrders({ orders }: { orders: UserRequest[] }) {
               >
                 {/* Car Image */}
                 <div className="h-48 bg-gray-200 flex items-center justify-center relative">
-                  {order.car.imageUrls && order.car.imageUrls.length > 0 ? (
+                  {order?.car && order?.car?.imageUrls?.length ? (
                     <Image
-                      src={order.car.imageUrls[0]}
+                      src={returnImage(order.car.imageUrls)}
                       alt={`${order.car.make} ${order.car.model}`}
-                      className="h-full w-full object-cover"
+                      className="object-cover"
                       fill
                     />
                   ) : (
-                    <div className="text-gray-400 text-center">
-                      <Image src={"/placeholder.svg"} alt="placehol" fill />
-                    </div>
+                    <Image
+                      src="/placeholder.svg"
+                      alt="Placeholder"
+                      className="object-cover"
+                      width={300}
+                      height={192}
+                    />
                   )}
                 </div>
 

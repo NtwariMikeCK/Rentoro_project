@@ -9,6 +9,7 @@ import request from "@/utils/axios";
 import Image from "next/image";
 import { CircleUserRound } from "lucide-react";
 import { User } from "@/types/carType";
+import { useRouter } from "next/navigation";
 
 export default function NavBar({
   isDark,
@@ -17,6 +18,7 @@ export default function NavBar({
   isDark?: boolean;
   isHost?: boolean;
 }) {
+  const router = useRouter();
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
@@ -38,6 +40,7 @@ export default function NavBar({
     onSuccess: () => {
       if (typeof window !== "undefined") {
         localStorage.removeItem("token");
+        router.push("/");
         setToken(null);
       }
     },
@@ -77,7 +80,7 @@ export default function NavBar({
               href="/orders"
               className="text-white bg-[#593CFB] hover:bg-[#452CC9] px-4 py-2 rounded-md font-medium"
             >
-              Purchases
+              Orders
             </a>
           )}
           {!isHost && (
@@ -89,7 +92,7 @@ export default function NavBar({
             </a>
           )}
           {isHost && (
-            <Link href="/list-your-car">
+            <Link href="/hosts/register">
               <button className="text-white bg-[#593CFB] hover:bg-[#452CC9] px-4 py-2 rounded-md font-medium">
                 List Your Car
               </button>

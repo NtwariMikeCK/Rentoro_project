@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "2684054.fs1.hubspotusercontent-na1.net",
+      },
+
+      {
+        protocol: "https",
         hostname: "res.cloudinary.com",
         port: "",
         pathname: "/**",

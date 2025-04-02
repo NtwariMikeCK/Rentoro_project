@@ -3,6 +3,23 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import requestAxios from "@/utils/axios";
 
+/*
+ * RentalRequestStatus is an enum that represents the status of a rental
+ * request
+ * PENDING - The request is pending approval
+ * APPROVED - The request has been approved
+ * REJECTED - The request has been rejected
+ * CANCELLED - The request has been cancelled
+ * COMPLETED - The request has been completed
+ * */
+export enum RentalRequestStatus {
+  PENDING = "PENDING",
+  APPROVED = "APPROVED",
+  REJECTED = "REJECTED",
+  CANCELLED = "CANCELLED",
+  COMPLETED = "COMPLETED",
+}
+
 export default function RentalPageDashboard({
   request,
   refetch,
@@ -13,6 +30,8 @@ export default function RentalPageDashboard({
   const { mutate, isPending } = useMutation({
     mutationFn: async (status: string) =>
       await requestAxios.patch(`/rental-requests/${request?.id}`, {
+        startDate: request.startDate,
+        endDate: request.endDate,
         status: status,
       }),
     onSuccess: async () => {
@@ -20,8 +39,8 @@ export default function RentalPageDashboard({
       toast.success("Success changing status");
     },
     onError: (error) => {
-      toast.error("Error validating car");
       console.log(error);
+      toast.error("Error validating car");
     },
   });
 
@@ -93,14 +112,14 @@ export default function RentalPageDashboard({
           {request.status === "PENDING" && (
             <div className="mt-4 flex gap-4">
               <button
-                onClick={() => mutate("APPROVED")}
+                onClick={() => mutate(RentalRequestStatus.APPROVED)}
                 className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
                 disabled={isPending}
               >
                 {isPending ? "Processing..." : "Approve"}
               </button>
               <button
-                onClick={() => mutate("REJECTED")}
+                onClick={() => mutate(RentalRequestStatus.REJECTED)}
                 className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
                 disabled={isPending}
               >

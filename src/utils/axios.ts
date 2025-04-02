@@ -35,6 +35,7 @@ axiosInstance.interceptors.response.use(
 
     if (error?.response?.status === 401 || error?.response?.status === 403) {
       if (typeof window !== "undefined") {
+        // On logout, clear the localStorage and redirect to the login page
         localStorage.clear();
         window.location.href = "/";
       }

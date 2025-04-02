@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { CalendarDays, CarIcon, MapPin, Star } from "lucide-react";
+import { CalendarDays, CarIcon, MapPin } from "lucide-react";
 import React, { useState } from "react";
 import request from "@/utils/axios";
 import { CarDataType } from "@/types/carType";
@@ -145,10 +145,7 @@ const CarDetailsPage = () => {
                     </p>
                     <p className="text-sm text-green-600">Available</p>
                   </div>
-                  <div className="flex items-center">
-                    <Star className="w-5 h-5 text-yellow-500 mr-1" />
-                    <span className="font-semibold">4.8 (125 trips)</span>
-                  </div>
+                  <div className="flex items-center"></div>
                 </div>
 
                 {/* Car Details List */}
