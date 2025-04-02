@@ -44,7 +44,7 @@ interface CarCardProps {
 
 export function CarCard({ car, refetch }: CarCardProps) {
   const [isValidated, setIsValidated] = useState(car.isValidated);
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const { mutate, isPending: isLoading } = useMutation({
     mutationFn: async () =>
@@ -53,7 +53,7 @@ export function CarCard({ car, refetch }: CarCardProps) {
       }),
     onSuccess: async () => {
       setIsValidated(!isValidated);
-      setIsDialogOpen(!isDialogOpen)
+      setIsDialogOpen(!isDialogOpen);
       refetch();
     },
     onError: () => {
@@ -74,12 +74,12 @@ export function CarCard({ car, refetch }: CarCardProps) {
         car.imageUrls &&
         Array.isArray(car.imageUrls) &&
         car.imageUrls.length > 0 ? (
-            <Image
-                src={car?.imageUrls?.[0] ? car.imageUrls[0] : "/placeholder.svg"}
-                alt={`${car?.make || "Unknown"} ${car?.model || "Car"}`}
-                fill
-                className="object-cover"
-            />
+          <Image
+            src={car?.imageUrls?.[0] ? car.imageUrls[0] : "/placeholder.svg"}
+            alt={`${car?.make || "Unknown"} ${car?.model || "Car"}`}
+            fill
+            className="object-contain"
+          />
         ) : (
           <div className="flex h-full w-full items-center justify-center">
             <Car className="h-16 w-16 text-muted-foreground/50" />

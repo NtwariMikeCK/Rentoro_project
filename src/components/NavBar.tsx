@@ -8,8 +8,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import request from "@/utils/axios";
 import Image from "next/image";
 import { CircleUserRound } from "lucide-react";
-import {User} from "@/types/carType";
-
+import { User } from "@/types/carType";
 
 export default function NavBar({
   isDark,
@@ -73,6 +72,12 @@ export default function NavBar({
               Dashboard
             </a>
           )}
+          <a
+            href="/orders"
+            className="text-white bg-[#593CFB] hover:bg-[#452CC9] px-4 py-2 rounded-md font-medium"
+          >
+            Purchases
+          </a>
           {!isHost && (
             <a
               href="/hosts"

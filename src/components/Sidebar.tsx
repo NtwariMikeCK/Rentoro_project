@@ -6,9 +6,11 @@ import { User } from "@/types/carType";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  CarFront,
   CircleUserRound,
   Home,
-  LayoutDashboard, ListTodo,
+  LayoutDashboard,
+  ListTodo,
   SquareChartGantt,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,7 +20,16 @@ import Image from "next/image";
 const links = [
   { name: "Home", href: "/", icon: Home },
   { name: "Cars", href: "/dashboard/cars", icon: SquareChartGantt },
-  { name: "Pending Validations", href: "/dashboard/pending_cars", icon: ListTodo },
+  {
+    name: "Pending Validations",
+    href: "/dashboard/pending_cars",
+    icon: ListTodo,
+  },
+  {
+    name: "Rentals",
+    href: "/dashboard/rentals",
+    icon: CarFront,
+  },
 ];
 
 export function Sidebar() {
